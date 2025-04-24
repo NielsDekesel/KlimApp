@@ -39,7 +39,7 @@ function initApp() {
  * @returns {Promise} Een promise die de routes teruggeeft
  */
 function loadRouteData() {
-    return fetch('data/routes.json')
+    return fetch('./data/routes.json')  // Gebruik relatief pad
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -47,6 +47,11 @@ function loadRouteData() {
             return response.json();
         })
         .then(data => {
+            // Controleer of de data juist is gestructureerd
+            if (!data || !data.klimRoutes || !Array.isArray(data.klimRoutes)) {
+                throw new Error('Ongeldig data formaat in routes.json');
+            }
+            
             // Simuleer een kleine vertraging om de loading state te tonen
             return new Promise((resolve) => {
                 setTimeout(() => {
@@ -61,19 +66,26 @@ function loadRouteData() {
  * @param {Array} routes - De geladen klimroutes
  */
 function initComponents(routes) {
+    // Controleer of er routes zijn
+    if (!routes || routes.length === 0) {
+        console.warn('Geen routes gevonden om weer te geven');
+        showErrorMessage('Geen klimroutes gevonden in het databestand.');
+        return;
+    }
+    
     // Initialiseer de route renderer
     if (!routeRenderer) {
         routeRenderer = new RouteRenderer(routesContainer);
     }
+    
+    // Toon eerst de routes voordat filterManager wordt geïnitialiseerd
+    routeRenderer.renderRoutes(routes);
     
     // Initialiseer de filter manager
     filterManager = new FilterManager(routes, (filteredRoutes) => {
         // Deze callback wordt aangeroepen wanneer filters veranderen
         routeRenderer.renderRoutes(filteredRoutes);
     });
-    
-    // Render de routes voor de eerste keer
-    routeRenderer.renderRoutes(routes);
 }
 
 /**
@@ -89,13 +101,14 @@ function bindSortEvents() {
 
 /**
  * Toont een foutmelding als de routes niet konden worden geladen
+ * @param {string} message - Optioneel aangepast foutbericht
  */
-function showErrorMessage() {
+function showErrorMessage(message = 'De klimroutes konden niet worden geladen. Probeer het later opnieuw.') {
     routesContainer.innerHTML = `
         <div class="error-message">
             <i class="fas fa-exclamation-triangle"></i>
             <h3>Er is een fout opgetreden</h3>
-            <p>De klimroutes konden niet worden geladen. Probeer het later opnieuw.</p>
+            <p>${message}</p>
         </div>
     `;
 }
