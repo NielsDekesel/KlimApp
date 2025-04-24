@@ -205,7 +205,7 @@ class FilterManager {
                 break;
             case 'position':
             default:
-                this.filteredRoutes.sort((a, b) => a.positie - b.positie);
+                this.filteredRoutes.sort((a, b) => utils.compareGrades(a.gradatie, b.gradatie));
                 break;
         }
         
