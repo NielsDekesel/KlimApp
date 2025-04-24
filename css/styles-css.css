@@ -1,0 +1,386 @@
+/* Base styles */
+:root {
+    /* Kleurenpalet */
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --background-color: #f9f9f9;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --text-light: #777777;
+    --border-color: #dddddd;
+
+    /* Gradatie kleuren */
+    --grade-3: #98e698; /* Lichtgroen voor gemakkelijke routes */
+    --grade-4: #a4e0a4;
+    --grade-5: #b6d7a8;
+    --grade-6: #ffe599; /* Geel voor middelmatige routes */
+    --grade-7: #f9cb9c; /* Oranje voor moeilijke routes */
+    --grade-8: #ea9999; /* Rood voor zeer moeilijke routes */
+
+    /* Boorhaak kleuren */
+    --bolt-red: #ff6b6b;
+    --bolt-blue: #5dabff;
+    --bolt-yellow: #ffd95a;
+    --bolt-cyan: #5effc9;
+    --bolt-black: #5b5b5b;
+
+    /* Formaat variabelen */
+    --border-radius: 8px;
+    --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --header-height: 60px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500');
+    background-size: cover;
+    background-position: center;
+}
+
+.header-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Section styles */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+.intro p {
+    margin-bottom: 15px;
+    max-width: 800px;
+}
+
+/* Filter section */
+.filter-section {
+    background-color: white;
+    box-shadow: var(--card-shadow);
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.active-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.filter-count {
+    color: var(--text-light);
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Routes section */
+.sort-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-options label {
+    margin-right: 10px;
+    color: var(--text-light);
+}
+
+.sort-options select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.route-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.route-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.route-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.route-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.route-grade {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    min-width: 40px;
+    text-align: center;
+}
+
+.route-body {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.route-info {
+    margin-bottom: 10px;
+}
+
+.route-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.route-info-item i {
+    margin-right: 10px;
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+.route-description {
+    margin-top: 15px;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.route-description-toggle {
+    color: var(--accent-color);
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.route-description-full {
+    display: none;
+}
+
+/* Gradatie styling */
+.grade-3, .grade-3plus, .grade-3minus {
+    background-color: var(--grade-3);
+}
+
+.grade-4, .grade-4plus, .grade-4minus {
+    background-color: var(--grade-4);
+}
+
+.grade-5, .grade-5plus, .grade-5a, .grade-5b, .grade-5c {
+    background-color: var(--grade-5);
+}
+
+.grade-6, .grade-6plus, .grade-6a, .grade-6aplus, .grade-6b, .grade-6bplus, .grade-6c {
+    background-color: var(--grade-6);
+}
+
+.grade-7, .grade-7plus, .grade-7a, .grade-7aplus, .grade-7b, .grade-7bplus, .grade-7c {
+    background-color: var(--grade-7);
+}
+
+.grade-8, .grade-8plus, .grade-8a, .grade-8aplus, .grade-8b, .grade-8bplus, .grade-8c {
+    background-color: var(--grade-8);
+}
+
+/* Footer styles */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    header {
+        padding: 30px 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .routes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animaties */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.route-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading indicator */
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* No results message */
+.no-results {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-light);
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--border-color);
+}
+
+.no-results h3 {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klimroutes Rochers de Landelies</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome voor iconen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Klimroutes Rochers de Landelies</h1>
+            <p class="subtitle">Ontdek meer dan 50 klimroutes in dit prachtige Belgische kalksteengebied</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <h2>Over dit klimgebied</h2>
+                <p>Landelies is verdeeld in twee duidelijk verschillende sectoren: La Dalle du Fou en Le Sanctuaire. De Dalle is zonder twijfel de grootste troef van de site. Op het zuidwesten georiënteerd, varieert de hoogte van 30 tot 35 meter en heeft een ontwikkeling van iets meer dan 40 meter bij L'Alpi-Franc en de graat van de President.</p>
+                <p>Met een gemiddelde helling van +/- 70 graden is het zeer licht concaaf. De rots is solide, vrij witte kalksteen, hier en daar bezaaid met royale grepen en gestreept door goede spleten. In sommige zones wordt het compact tot zeer glad, met passages in 7a+ 7b, met een meerderheid van routes van 4 tot 6c. Het klimmen is volledig buiten, technisch en op richels.</p>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="container">
+                <h2>Routes filteren</h2>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="search">Zoeken:</label>
+                        <input type="text" id="search" placeholder="Naam van de route...">
+                    </div>
+                    <div class="filter-group">
+                        <label for="sector">Sector:</label>
+                        <select id="sector">
+                            <option value="">Alle sectoren</option>
+                            <!-- Wordt dynamisch gevuld via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="grade">Gradatie:</label>
+                        <select id="grade">
+                            <option value="">Alle gradaties</option>
+                            <!-- Wordt dynamisch gevuld via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="length">Lengte:</label>
+                        <select id="length">
+                            <option value="">Alle lengtes</option>
+                            <option value="short">Kort (< 20m)</option>
+                            <option value="medium">Middellang (20-35m)</option>
+                            <option value="long">Lang (> 35m)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="active-filters">
+                    <span class="filter-count">0 filters actief</span>
+                    <button id="clear-filters" class="btn">Filters wissen</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="routes-section">
+            <div class="container">
+                <h2>Klimroutes <span id="route-count"></span></h2>
+                <div class="sort-options">
+                    <label for="sort">Sorteren op:</label>
+                    <select id="sort">
+                        <option value="position">Positie (links naar rechts)</option>
+                        <option value="name">Naam (A-Z)</option>
+                        <option value="grade-asc">Gradatie (oplopend)</option>
+                        <option value="grade-desc">Gradatie (aflopend)</option>
+                    </select>
+                </div>
+                <div id="routes-container" class="routes-grid">
+                    <!-- Hier worden de klimroutes via JavaScript ingevoegd -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>De data is gebaseerd op het Topo document van Rochers de Landelies</p>
+            <p>© 2025 - Klimtopo Web Applicatie</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/filterManager.js"></script>
+    <script src="js/routeRenderer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
