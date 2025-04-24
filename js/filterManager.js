@@ -32,6 +32,14 @@ class FilterManager {
         // Initialisatie
         this._initFilterOptions();
         this._bindEvents();
+        
+        // Belangrijk: Toon alle routes bij initialisatie
+        if (this.onFilterChange) {
+            this.onFilterChange(this.filteredRoutes);
+        }
+        
+        // Update de filter teller
+        this._updateFilterCount();
     }
     
     /**
